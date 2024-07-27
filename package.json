@@ -1,6 +1,6 @@
 {
   "name": "vault-server",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "The Server side of the Vault Music Streaming App",
   "main": "index.js",
   "type": "module",

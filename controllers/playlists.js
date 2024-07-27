@@ -1,5 +1,4 @@
 import PlayList from "../models/Playlist.js";
-import Song from "../models/Song.js";
 import User from "../models/User.js";
 
 /* READ */
@@ -8,7 +7,7 @@ export const getAllUserPlaylists = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
         const playlists = await Promise.all(
-            user.playlists.map((id) => PlayList.findById(id))
+            user.playlists.map((id) => PlayList.findById(id).populate("songs"))
         )
 
         const formatedPlaylists = await playlists.map(({_id, name, description, image, songs, user}) => {
@@ -32,6 +31,14 @@ export const getPlaylist = async (req, res) => {
     }
 }
 
+export const getAllPlaylists = async (req, res) => {
+    try {
+        const playlists = await PlayList.find();
+        res.status(200).json(playlists);
+    } catch (err){
+        res.status(500).json({error: err.message});
+    }
+}
 
 /* WRIGHT */
 export const createPlayList = async (req, res) => {

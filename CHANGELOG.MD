@@ -1,3 +1,8 @@
+## ([SCRUM-10] - [1.7.0]) - (2024-07-27)
+- add getAllPlaylists controller function
+- add GET getAllPlaylists route
+- introduced ticket id to CHAGELOG updates
+
 ## [1.6.0] - (2024-07-27)
 - add getLikedSongs controller function
 - add GET getLikedSongs route 
