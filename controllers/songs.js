@@ -21,6 +21,21 @@ export const getAllSongs = async (req, res) => {
     }
 }
 
+export const getLikedSongs = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        
+        const likedSongs = await Promise.all(
+            user.likedSongs.map((id) => Song.findById(id))
+        );
+
+        res.status(200).json(likedSongs);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
 /* WRIGHT */
 export const createSong = async (req, res) => {
     try {

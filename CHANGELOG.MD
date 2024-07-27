@@ -1,3 +1,7 @@
+## [1.6.0] - (2024-07-27)
+- add getLikedSongs controller function
+- add GET getLikedSongs route 
+
 ## [1.5.0] - (2024-07-27)
 - add MIT LICENCE
 - move code from "MusicStreamingProject" repo to Vault-Server repo
