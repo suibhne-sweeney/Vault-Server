@@ -40,6 +40,20 @@ export const getAllPlaylists = async (req, res) => {
     }
 }
 
+export const getUserLikedPlaylists = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+    
+        const likedPlaylists = await Promise.all(
+            user.likedPlaylists.map((id) => PlayList.findById(id))
+        )
+        res.status(200).json(likedPlaylists)
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
 /* WRIGHT */
 export const createPlayList = async (req, res) => {
     try{
