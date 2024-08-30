@@ -1,3 +1,6 @@
+## [1.8.1] - (2024-08-30)
+- remove username, stagename fields 
+
 ## [SCRUM-8] - [1.8.0] - (2024-07-27)
 - add getUserLikedPlaylists controller function
 - add GET getUserLikedPlaylists route

@@ -1,12 +1,6 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-    username:{
-        type: String,
-        required: true,
-        min: 3,
-        unique: true
-    },
     firstName:{
         type: String,
         required: true,
@@ -66,11 +60,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum: ['user', 'artist'],
         default: 'user',
-        required: true
-    },
-    stageName: {
-        type: String,
-        default: "",
         required: false
     },
     active: {
