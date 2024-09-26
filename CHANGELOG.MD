@@ -1,3 +1,7 @@
+## [1.8.2] - (2024-09-26)
+- patch getPlaylist to populate user
+- patch createSong to see artist's name
+
 ## [1.8.1] - (2024-08-30)
 - remove username, stagename fields 
 

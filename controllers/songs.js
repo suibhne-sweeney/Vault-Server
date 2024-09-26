@@ -40,6 +40,8 @@ export const getLikedSongs = async (req, res) => {
 export const createSong = async (req, res) => {
     try {
         const { id } = req.params;
+        const user = await User.findById(id);
+
         const {
             name,
             song,
@@ -51,7 +53,8 @@ export const createSong = async (req, res) => {
     
         const newSong = new Song({
             name,
-            artist: id,
+            artistId: id,
+            artistName: `${user.firstName} ${user.lastName}`,
             song,
             image,
             plays,

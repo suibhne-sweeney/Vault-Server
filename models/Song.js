@@ -8,9 +8,13 @@ const SongSchema = new mongoose.Schema({
             min: 3,
             max: 30
         },
-        artist: { // artist ID who made the song
+        artistId: { // artist ID who made the song
             type: mongoose.Schema.ObjectId,
             ref: 'User', 
+            required: true
+        },
+        artistName:{
+            type: String,
             required: true
         },
         song: {

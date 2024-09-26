@@ -33,6 +33,11 @@ const PlayListSchema = new mongoose.Schema({
             type: Map,
             of: Boolean,
             default: {}
+        },
+        collectionType: {
+            type: String,
+            enum: ["playlist", "album"],
+            defualt: "playlist"
         }
         
     }, {timestamps: true}

@@ -23,7 +23,7 @@ export const getAllUserPlaylists = async (req, res) => {
 export const getPlaylist = async (req, res) => {
     try {
         const { id } = req.params;
-        const playlist = await PlayList.findById(id).populate("songs")
+        const playlist = await PlayList.findById(id).populate("songs").populate("user", ["firstName", "lastName"])
         
         res.status(200).json(playlist);
     } catch (error) {
