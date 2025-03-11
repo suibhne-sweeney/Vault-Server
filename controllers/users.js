@@ -4,7 +4,7 @@ import User from "../models/User.js";
 export const getUser = async (req, res) => {
     try{
         const { id } = req.params;
-        const user = await User.findById(id);
+        const user = await User.findById(id).populate("playlists");
         res.status(200).json(user);
     }catch(err){
         res.status(404).json({message: err.message})
@@ -20,8 +20,8 @@ export const getFollowing = async (req, res) => {
             user.following.map((id) => User.findById(id))
         );
 
-        const formatedFollowed = await followed.map(({ _id, firstName, email }) => {
-            return {_id, firstName, email}
+        const formatedFollowed = await followed.map(({ _id, firstName, email, picturePath }) => {
+            return {_id, firstName, email, picturePath}
         })
         res.status(200).json(formatedFollowed);
     }catch(err){
@@ -38,8 +38,8 @@ export const getFollowers = async (req, res) => {
             user.followers.map((id) => User.findById(id))
         );
 
-        const formatedFollowers = await followers.map(({_id, firstName, email }) => {
-            return {_id, firstName, email };
+        const formatedFollowers = await followers.map(({_id, firstName, email, picturePath }) => {
+            return {_id, firstName, email, picturePath};
         }) 
         res.status(200).json(formatedFollowers);
     }catch (err){

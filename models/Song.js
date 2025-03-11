@@ -41,7 +41,7 @@ const SongSchema = new mongoose.Schema({
             type: Map,
             of: Boolean,
             default: {}
-        }
+        },
         
     }, {timestamps: true}
 )

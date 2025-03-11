@@ -1,3 +1,8 @@
+## [1.8.2] - (2025-03-11)
+- patch playlist.js file
+- patch song.js file
+- patch user.js file
+
 ## [1.8.2] - (2024-09-26)
 - patch getPlaylist to populate user
 - patch createSong to see artist's name

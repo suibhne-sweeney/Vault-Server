@@ -7,11 +7,11 @@ export const getAllUserPlaylists = async (req, res) => {
         const { id } = req.params;
         const user = await User.findById(id);
         const playlists = await Promise.all(
-            user.playlists.map((id) => PlayList.findById(id).populate("songs"))
+            user.playlists.map((id) => PlayList.findById(id).populate("songs").populate("user", ["firstName", "lastName"]))
         )
 
-        const formatedPlaylists = await playlists.map(({_id, name, description, image, songs, user}) => {
-            return {_id, name, description, image, songs, user}  
+        const formatedPlaylists = await playlists.map(({_id, name, description, image, songs, user, likes}) => {
+            return {_id, name, description, image, songs, user, likes}  
         })
 
         res.status(200).json(formatedPlaylists)
@@ -90,8 +90,6 @@ export const likePlaylist = async (req, res) => {
     try {
         const { id } = req.params;
         const { userId } = req.body;
-
-        console.log(id, userId)
 
         const user = await User.findById(userId);
         const playlist = await PlayList.findById(id);

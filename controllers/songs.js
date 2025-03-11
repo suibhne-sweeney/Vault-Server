@@ -48,7 +48,7 @@ export const createSong = async (req, res) => {
             image,
             plays,
             date,
-            genres
+            genres,
         } = req.body;
     
         const newSong = new Song({
@@ -59,7 +59,7 @@ export const createSong = async (req, res) => {
             image,
             plays,
             date,
-            genres
+            genres: genres.split(",")
         })
     
     

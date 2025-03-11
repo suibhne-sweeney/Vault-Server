@@ -46,7 +46,7 @@ const upload = multer({storage});
 app.post("/api/auth/regiseter", upload.single("picture"), register); // the register is a function known as a controler and its the logic of our end point
 app.post("/api/users/:id/playlists", upload.single("picture"), verifyToken, createPlayList)
 app.post("/api/users/:id/songs", upload.fields([
-    { name: "song", maxCount: 1 },
+    { name: "sound", maxCount: 1 },
     { name: "picture", maxCount: 1 }
 ]), verifyToken, createSong);
 
