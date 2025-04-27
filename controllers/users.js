@@ -11,6 +11,15 @@ export const getUser = async (req, res) => {
     }
 }
 
+export const getAllUsers = async (req, res) => {
+    try{
+        const users = await User.find();
+        res.status(200).json(users)
+    } catch (error) {
+        res.status(404).json({error: error.message});
+    }
+}
+
 export const getFollowing = async (req, res) => {
     try{
         const { id } = req.params;
@@ -78,4 +87,20 @@ export const followOrUnfollow = async (req, res) => {
     }catch(err){
         res.status(404).json({ error: err.message })
     }
+}
+
+export const updateUser = async (req, res) => {
+    try{
+        const { id } = req.params;
+        const { firstName, lastName, image } = req.body;
+        const user = await User.findByIdAndUpdate(
+            id,
+            { $set: { firstName, lastName, picturePath: image } },
+            { new: true }
+        );
+        res.status(200).json(user); 
+    }
+    catch(err){
+        res.status(404).json({ error: err.message })
+    }  
 }

@@ -5,6 +5,7 @@ import User from "../models/User.js";
 export const getAllUserPlaylists = async (req, res) => {
     try {
         const { id } = req.params;
+        console.log(id);
         const user = await User.findById(id);
         const playlists = await Promise.all(
             user.playlists.map((id) => PlayList.findById(id).populate("songs").populate("user", ["firstName", "lastName"]))

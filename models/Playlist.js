@@ -18,7 +18,7 @@ const PlayListSchema = new mongoose.Schema({
         },
         image: {
             type: String,
-            default: "https://ik.imagekit.io/8cs4gpobr/spotify/playlists/default.png?updatedAt=1696157039341"
+            default: "https://www.afrocharts.com/images/song_cover-500x500.png"
         },
         songs: [{
             type: mongoose.Schema.ObjectId,

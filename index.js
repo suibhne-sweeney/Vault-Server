@@ -16,6 +16,7 @@ import { register } from './controllers/auth.js';
 import { createPlayList } from './controllers/playlists.js';
 import { createSong } from './controllers/songs.js';
 import { verifyToken } from './middleware/auth.js';
+import { updateUser } from './controllers/users.js';
 
 /* CONFIGURATION */
 const __filename = fileURLToPath(import.meta.url);
@@ -49,6 +50,7 @@ app.post("/api/users/:id/songs", upload.fields([
     { name: "sound", maxCount: 1 },
     { name: "picture", maxCount: 1 }
 ]), verifyToken, createSong);
+app.patch("/api/users/:id/update", upload.single("picture"), verifyToken, updateUser);
 
 /* ROUTES */
 app.use("/api/auth", authRoutes);
